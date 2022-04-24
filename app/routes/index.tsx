@@ -1,4 +1,4 @@
-import { Form } from "@remix-run/react";
+import { Form, useActionData } from "@remix-run/react";
 import type { ActionFunction } from "@remix-run/server-runtime";
 
 export const action: ActionFunction = async ({ request }) => {
@@ -8,9 +8,12 @@ export const action: ActionFunction = async ({ request }) => {
 };
 
 export default function Index() {
+  let actionData = useActionData();
+
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
       <h1>Welcome to Remix</h1>
+      <pre>{JSON.stringify(actionData)}</pre>
       <ul>
         <li>
           <a
