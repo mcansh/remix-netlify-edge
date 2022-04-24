@@ -1,3 +1,12 @@
+import { Form } from "@remix-run/react";
+import type { ActionFunction } from "@remix-run/server-runtime";
+
+export const action: ActionFunction = async ({ request }) => {
+  let formData = await request.formData();
+  console.log({ formData });
+  return { nice: true };
+};
+
 export default function Index() {
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
@@ -27,6 +36,10 @@ export default function Index() {
           </a>
         </li>
       </ul>
+
+      <Form method="post">
+        <button type="submit">nice</button>
+      </Form>
     </div>
   );
 }
